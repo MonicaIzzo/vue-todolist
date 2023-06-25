@@ -37,6 +37,15 @@ Inseriamo un filtro per cercare all'interno dei task
   - 
 **FINE**  
 
+
+Const works = [
+  'leggere la casella di posta in arrivo',
+  'dare feedback per ordine stampe evento',
+  'verificare se nei canali social ci sono nuove notifiche',
+  'aggiornare sitoweb corporate',
+
+];
+
 */
 
 // # verifiche JS
@@ -49,9 +58,17 @@ console.log('Vue OK, Vue');
     const app = Vue.createApp ({
         data() {
             return {
-                message: 'Hello Vue JS',
-                imgVueJs: 'img/vuejs-development-malaysia.jpeg'
+                works: [
+                'Leggere la casella di posta in arrivo',
+                'Dare feedback per ordine stampe evento',
+                'Verificare se nei canali social ci sono nuove notifiche',
+                'Aggiornare sito web corporate',
+              ]
             }
+        },
+        methods: {
+          deleteWork(targetIndex){
+            this.works.splice(targetIndex, 1)
         }
     });
 
