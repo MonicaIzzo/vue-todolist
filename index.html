@@ -43,7 +43,7 @@
                 <ul class="list-group">
                     <li v-for="(job, i) in filteredJobs"
                     class="list-group-item d-flex align-items-center justify-content-between">
-                    {{job}}
+                    {{job.text}}
                     <button type="button" class="btn-close" @click="deleteJob(i)"></button>
                     </li>
                     <li class="list-group-item">
