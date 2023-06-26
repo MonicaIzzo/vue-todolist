@@ -36,8 +36,6 @@ Inseriamo un filtro per cercare all'interno dei task
  **5**
   - 
 **FINE**  
-
-
 Const works = [
   'leggere la casella di posta in arrivo',
   'dare feedback per ordine stampe evento',
@@ -45,7 +43,6 @@ Const works = [
   'aggiornare sitoweb corporate',
 
 ];
-
 */
 
 // # verifiche JS
