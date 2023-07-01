@@ -56,11 +56,17 @@ console.log('Vue OK, Vue');
             return {
                 searchedJobs: '',
                 newJob: '',
-                jobs: [
+               /* jobs: [
                   'Leggere la casella di posta in arrivo',
                   'Dare feedback per ordine stampe evento',
                   'Verificare se nei canali social ci sono nuove notifiche',
                   'Aggiornare sito web corporate'
+                ], */
+                jobs: [
+                  {id: 101, text:'Leggere la casella di posta in arrivo'},
+                  {id: 223, text:'Dare feedback per ordine stampe evento'},
+                  {id: 349, text:'Verificare se nei canali social ci sono nuove notifiche'},
+                  {id: 459, text:'Aggiornare sito web corporate'}
                 ],
             }
         },
