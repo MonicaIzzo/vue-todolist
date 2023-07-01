@@ -61,6 +61,13 @@ console.log('Vue OK, Vue');
                   'Aggiornare sito web corporate'
                 ]
             }
+        },
+        methods: {
+          // funzione per eliminare un task
+          deleteJob (targetIndex) {
+            this.jobs.splice(targetIndex, 1)
+
+          }
         }
   });
 
