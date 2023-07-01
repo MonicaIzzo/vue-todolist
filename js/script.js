@@ -46,58 +46,22 @@ Const works = [
 */
 
 // # verifiche JS
-console.log('JS OK');
 console.log('Vue OK, Vue');
 
 // # inizializzo Vue JS
 
     //Estrapolo il metodo createApp
-    const app = Vue.createApp ({
+    const app = Vue.createApp({
         data() {
             return {
-                newJob: '',
-                searchedJobs: '',
                 jobs: [
-                  {id: 1, text:'Leggere la casella di posta in arrivo', done: false},
-                  {id: 2, text:'Dare feedback per ordine stampe evento', done: false},
-                  {id: 3, text:'Verificare se nei canali social ci sono nuove notifiche', done: false},
-                  {id: 4, text:'Aggiornare sito web corporate', done: false},
-                ],
+                  'Leggere la casella di posta in arrivo',
+                  'Dare feedback per ordine stampe evento',
+                  'Verificare se nei canali social ci sono nuove notifiche',
+                  'Aggiornare sito web corporate'
+                ]
             }
-        },
-        computed: {
-          filteredJobs() {
-            const term = this.searchedTerm.toLowerCase();
-
-            return this.jobs.filter((job) =>
-              job.text.toLowerCase().includes(term));
-
-          },
-          nextId() {
-            const highestId = this.jobs.reduce((result, job) => 
-              job.id > highestId ? highestId : result, 0);
-              return ++highestId;
-            }
-        },
-        methods: {
-        // funzione per eliminare un job  
-          deleteJob(targetId){
-            this.works = this.works.filter(work => targetId !== jobs.id);
-        },
-
-
-        addJob(){
-          if(!this.newJob.length) return;
-
-            this.searchedTerm ='';
-
-            const job = {id: this.nextId, text: this.newJob};
-            this.jobs.push(job);
-
-            this.newJob = '';
-            this.$refs.fuoco.focus();
-        },
-    }
+        }
   });
 
     //La monto nell'elemento HTML "radice"

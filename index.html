@@ -27,34 +27,13 @@
     <div id="root">
         <div class="container text-center mx-auto pt-5" >
             <h2>Cose da fare</h2>
-            <!-- Ricerca -->
             <div class="w-50 mx-auto">
-            <!-- Ricerca -->
-            <div class="mb-3">
-                <input
-                v-model.trim="searchedJobs"
-                type="text" class="form-control" placeholder="Cerca...">
-            </div>
-            <h4 v-if="!jobs.length">Bravo non ci sono cose da fare!</h4>
-            <!-- Lista jobs -->
             <div>
                 <ul class="list-group">
-                    <li v-for="job in filteredJobs"
-                    class="list-group-item d-flex align-items-center justify-content-between">
-                    {{job.text}}
-                    <button type="button" class="btn-close" @click="deleteJob(job.id)"></button>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Aggiungi jobs -->
-                        <div class="input-group mb-3">
-                            <input 
-                            v-model.trim="newJob"
-                            type="text" class="form-control" placeholder="Inserisci job..." ref="fuoco"
-                            @keyup.enter="addJob">
-                            <button class="btn btn-outline-success"
-                            @click="addJob"
-                            type="button">Aggiungi</button>
-                        </div>
+                    <li
+                    v-for="job in jobs"
+                    class="list-group-item"
+                    v-text="job">
                     </li>
                 </ul>
             </div>
