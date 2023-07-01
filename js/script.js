@@ -54,20 +54,44 @@ console.log('Vue OK, Vue');
     const app = Vue.createApp({
         data() {
             return {
+                searchedJobs: '',
+                newJob: '',
                 jobs: [
                   'Leggere la casella di posta in arrivo',
                   'Dare feedback per ordine stampe evento',
                   'Verificare se nei canali social ci sono nuove notifiche',
                   'Aggiornare sito web corporate'
-                ]
+                ],
             }
         },
-        methods: {
-          // funzione per eliminare un task
-          deleteJob (targetIndex) {
-            this.jobs.splice(targetIndex, 1)
+        computed: {
+          filteredJobs() {
+            const term = this.searchedJobs.toLowerCase();
+            console.log(term);
 
+            return this.jobs.filter((job) => {
+              return job.toLowerCase().includes(term);
+            }
+            );
           }
+        },
+        methods: {
+          // funzione per eliminare un job
+          deleteJob(targetIndex) {
+            this.jobs.splice(targetIndex, 1);
+          },
+
+        // funzione per sggiungere un job
+          addJob () {
+            if (!this.newJob.length) return;
+
+            this.searchedJobs = '';
+
+            this.jobs.push(this.newJob);
+            this.newJob = '';
+            this.$refs.focus.focus();
+          },
+
         }
   });
 

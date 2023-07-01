@@ -22,30 +22,63 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Vue JS-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- script javascript -->
+    <script defer src="js/script.js"></script>
 </head>
 <body>
     <div id="root">
         <div class="container text-center mx-auto pt-5" >
             <h2>Cose da fare</h2>
             <div class="w-50 mx-auto">
+            <!-- Ricerca -->
+            <div class="mb-3">
+            <!-- <input
+            v-model.trim="searchedJobs"
+            type="text" class="form-control" placeholder="Cerca...">
+            </div>-->
+            
+            <h4
+            v-if="!jobs.length" class="text-center">
+            Bravo non ci sono cose da fare!
+            </h4>
+            <!-- ricerca -->
+            <div class="mb-3">
+                <input type="text" class="form-control" id="" placeholder="cerca..."
+                v-model.trim="searchedJobs">
+            </div>
+
+            <!-- Lista jobs -->
             <div>
                 <ul class="list-group">
                     <li
-                    v-for="(job, i) in jobs"
+                    v-for="(job, i) in filteredJobs"
                     class="list-group-item d-flex align-items-center justify-content-between">
                     {{job}}
                     <button type="button" class="btn-close"
                     @click="deleteJob(i)">
                     </button>
                     </li>
+            <!-- Per aggiungere un job -->
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <input
+                            v-model.trim="newJob"
+                            type="text" class="form-control" placeholder="Inserisci un job..."
+                            ref="focus"
+                            @keyup.enter="addJob">
+                            <button class="btn btn-outline-success" type="button"
+                            @click="addJob">
+                            Aggiungi un job</button>
+                        </div>
+                    </li>
                 </ul>
             </div>
             </div>
         </div>
     </div>
-<!-- Vue JS-->
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<!-- script javascript -->
-<script defer src="js/script.js"></script>
+
 </body>
 </html>
