@@ -44,6 +44,19 @@
             v-if="!jobs.length" class="text-center">
             Bravo non ci sono cose da fare!
             </h4>
+            <!-- Azioni di Massa -->
+            <div class="btn-group w-100 mb-3" role="group">
+                <button type="button" class="btn btn-outline-success"
+                @click="setAllDone">Tutti fatti</button>
+
+                <button type="button" class="btn btn-outline-secondary"
+                @click="setAllUndone">Tutti non fatti</button>
+
+                <button type="button" class="btn btn-outline-danger"
+                @click="deleteAll">elimina tutti</button>
+            </div>
+
+
             <!-- ricerca -->
             <div class="mb-3">
                 <input type="text" class="form-control" id="" placeholder="cerca..."
@@ -54,11 +67,16 @@
             <div>
                 <ul class="list-group">
                     <li
-                    v-for="(job, i) in filteredJobs"
+                    v-for="job in filteredJobs"
                     class="list-group-item d-flex align-items-center justify-content-between">
-                    {{job}}
+                    <label 
+                        :class="{'text-decoration-line-through' : job.done}">
+                        <input
+                        v-model ="job.done"
+                        type="checkbox"> {{job.text}}
+                    </label>
                     <button type="button" class="btn-close"
-                    @click="deleteJob(i)">
+                    @click="deleteJob(job.id)">
                     </button>
                     </li>
             <!-- Per aggiungere un job -->

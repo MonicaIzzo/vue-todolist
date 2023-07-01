@@ -63,10 +63,10 @@ console.log('Vue OK, Vue');
                   'Aggiornare sito web corporate'
                 ], */
                 jobs: [
-                  {id: 101, text:'Leggere la casella di posta in arrivo'},
-                  {id: 223, text:'Dare feedback per ordine stampe evento'},
-                  {id: 349, text:'Verificare se nei canali social ci sono nuove notifiche'},
-                  {id: 459, text:'Aggiornare sito web corporate'}
+                  {id: 101, text:'Leggere la casella di posta in arrivo', done: false},
+                  {id: 223, text:'Dare feedback per ordine stampe evento', done: false},
+                  {id: 349, text:'Verificare se nei canali social ci sono nuove notifiche', done: false},
+                  {id: 459, text:'Aggiornare sito web corporate', done: false}
                 ],
             }
         },
@@ -75,16 +75,25 @@ console.log('Vue OK, Vue');
             const term = this.searchedJobs.toLowerCase();
             console.log(term);
 
-            return this.jobs.filter((job) => {
-              return job.toLowerCase().includes(term);
-            }
-            );
+            return this.jobs.filter((job) => job.text.toLowerCase().includes(term));
+          },
+
+          nextId() {
+          // ? cerco l'id più alto
+            let highestId = 0;
+            this.jobs.forEach((job) => {
+              if (job.id > highestId) highestId = job.id
+            });
+
+            nextId = ++highestId;
+
+            return nextId;
           }
-        },
+         },
         methods: {
           // funzione per eliminare un job
-          deleteJob(targetIndex) {
-            this.jobs.splice(targetIndex, 1);
+          deleteJob(targetId) {
+            this.jobs = this.jobs.filter((job) => targetId !== job.id);
           },
 
         // funzione per sggiungere un job
@@ -93,11 +102,30 @@ console.log('Vue OK, Vue');
 
             this.searchedJobs = '';
 
-            this.jobs.push(this.newJob);
+            const newJob = {id: this.nextId, text: this.newJob, done: false};
+            this.jobs.push(newJob);
+            
             this.newJob = '';
             this.$refs.focus.focus();
           },
+          // Funzione per eliminare tutti i job
+          deleteAll() {
+            this.jobs = [];
+          },
 
+          // Funzione per settare i job a "tutti fatti"
+          setAllDone () {
+            this.jobs.forEach(job => {
+              job.done = true;
+            });
+          },
+
+          // Funzione per settare i job a "nessuno fatto"
+          setAllUndone () {
+            this.jobs.forEach(job => {
+              job.done = false;
+            });
+          },
         }
   });
 
