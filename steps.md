@@ -2,6 +2,7 @@
 
 Rifare l'esercizio della to do list.
 Questa volta però ogni todo sarà un oggetto, formato da almeno due proprietà:
+
 - text, una stringa che indica il testo del todo
 - done, un booleano (true/false) che indica se il todo è stato fatto oppure no
 
@@ -21,20 +22,3 @@ Bonus:
 
 SUPERBONUS
 Inseriamo un filtro per cercare all'interno dei task
-
-<br>
-<br>
-
-- **0**
-  - 
-- **1**
-  - 
-- **2**
-  - 
-- **3**
-  - 
-  **4**
-  - 
- **5**
-  - 
-**FINE**  

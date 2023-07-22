@@ -20,114 +20,99 @@ Bonus:
 
 SUPERBONUS
 Inseriamo un filtro per cercare all'interno dei task
-<br>
-<br>
-
-- **0**
-  - 
-- **1**
-  - 
-- **2**
-  - 
-- **3**
-  - 
-  **4**
-  - 
- **5**
-  - 
-**FINE**  
-Const works = [
-  'leggere la casella di posta in arrivo',
-  'dare feedback per ordine stampe evento',
-  'verificare se nei canali social ci sono nuove notifiche',
-  'aggiornare sitoweb corporate',
-
-];
 */
 
 // # verifiche JS
-console.log('Vue OK, Vue');
+console.log("Vue OK, Vue");
 
 // # inizializzo Vue JS
 
-    //Estrapolo il metodo createApp
-    const app = Vue.createApp({
-        data() {
-            return {
-                searchedJobs: '',
-                newJob: '',
-               /* jobs: [
+//Estrapolo il metodo createApp
+const app = Vue.createApp({
+  data() {
+    return {
+      searchedJobs: "",
+      newJob: "",
+      /* jobs: [
                   'Leggere la casella di posta in arrivo',
                   'Dare feedback per ordine stampe evento',
                   'Verificare se nei canali social ci sono nuove notifiche',
                   'Aggiornare sito web corporate'
                 ], */
-                jobs: [
-                  {id: 101, text:'Leggere la casella di posta in arrivo', done: false},
-                  {id: 223, text:'Dare feedback per ordine stampe evento', done: false},
-                  {id: 349, text:'Verificare se nei canali social ci sono nuove notifiche', done: false},
-                  {id: 459, text:'Aggiornare sito web corporate', done: false}
-                ],
-            }
+      jobs: [
+        { id: 101, text: "Leggere la casella di posta in arrivo", done: false },
+        {
+          id: 223,
+          text: "Dare feedback per ordine stampe evento",
+          done: false,
         },
-        computed: {
-          filteredJobs() {
-            const term = this.searchedJobs.toLowerCase();
-            console.log(term);
+        {
+          id: 349,
+          text: "Verificare se nei canali social ci sono nuove notifiche",
+          done: false,
+        },
+        { id: 459, text: "Aggiornare sito web corporate", done: false },
+      ],
+    };
+  },
+  computed: {
+    filteredJobs() {
+      const term = this.searchedJobs.toLowerCase();
+      console.log(term);
 
-            return this.jobs.filter((job) => job.text.toLowerCase().includes(term));
-          },
+      return this.jobs.filter((job) => job.text.toLowerCase().includes(term));
+    },
 
-          nextId() {
-          // ? cerco l'id più alto
-            let highestId = 0;
-            this.jobs.forEach((job) => {
-              if (job.id > highestId) highestId = job.id
-            });
+    nextId() {
+      // ? cerco l'id più alto
+      let highestId = 0;
+      this.jobs.forEach((job) => {
+        if (job.id > highestId) highestId = job.id;
+      });
 
-            nextId = ++highestId;
+      nextId = ++highestId;
 
-            return nextId;
-          }
-         },
-        methods: {
-          // funzione per eliminare un job
-          deleteJob(targetId) {
-            this.jobs = this.jobs.filter((job) => targetId !== job.id);
-          },
+      return nextId;
+    },
+  },
+  methods: {
+    // funzione per eliminare un job
+    deleteJob(targetId) {
+      this.jobs = this.jobs.filter((job) => targetId !== job.id);
+    },
 
-        // funzione per sggiungere un job
-          addJob () {
-            if (!this.newJob.length) return;
+    // funzione per sggiungere un job
+    addJob() {
+      if (!this.newJob.length) return;
 
-            this.searchedJobs = '';
+      this.searchedJobs = "";
 
-            const newJob = {id: this.nextId, text: this.newJob, done: false};
-            this.jobs.push(newJob);
-            
-            this.newJob = '';
-            this.$refs.focus.focus();
-          },
-          // Funzione per eliminare tutti i job
-          deleteAll() {
-            this.jobs = [];
-          },
+      const newJob = { id: this.nextId, text: this.newJob, done: false };
+      this.jobs.push(newJob);
 
-          // Funzione per settare i job a "tutti fatti"
-          setAllDone () {
-            this.jobs.forEach(job => {
-              job.done = true;
-            });
-          },
+      this.newJob = "";
+      this.$refs.focus.focus();
+    },
+    // Funzione per eliminare tutti i job
+    deleteAll() {
+      this.jobs = [];
+    },
 
-          // Funzione per settare i job a "nessuno fatto"
-          setAllUndone () {
-            this.jobs.forEach(job => {
-              job.done = false;
-            });
-          },
-        }
-  });
+    // Funzione per settare i job a "tutti fatti"
+    setAllDone() {
+      this.jobs.forEach((job) => {
+        job.done = true;
+      });
+    },
 
-    //La monto nell'elemento HTML "radice"
-    app.mount('#root');
+    // Funzione per settare i job a "nessuno fatto"
+    setAllUndone() {
+      this.jobs.forEach((job) => {
+        job.done = false;
+      });
+    },
+  },
+});
+
+//La monto nell'elemento HTML "radice"
+app.mount("#root");
